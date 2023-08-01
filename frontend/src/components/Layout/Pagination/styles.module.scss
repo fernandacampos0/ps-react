@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+
+  button {
+    border-color: transparent !important;
+  }
+}
+
+.input {
+  width: 42px;
+  appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.input_per_page {
+  color: gray;
+  height: 100%;
+  width: 24px;
+  border: none;
+  background: none;
+}
