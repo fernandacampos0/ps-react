@@ -9,20 +9,19 @@ use App\Http\Requests\UpdateProdutosRequest;
 
 class ProdutosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    private Produtos $produtos;
+
+    public function __construct(Produtos $produtos){
+        $this->produtos = $produtos;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      */
-    public function create()
+
+    public function index()
     {
-        //
+        return response()->json($this->produtos->all());
     }
 
     /**
@@ -30,31 +29,30 @@ class ProdutosController extends Controller
      */
     public function store(StoreProdutosRequest $request)
     {
-        //
+        $data = $request->validated();
+        $produtos = $this->produtos->create($data);
+        return response()->json($produtos);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Produtos $produtos)
+    public function show($id)
     {
-        //
+        $produtos = $this->produtos->find($id);
+        return response()->json($produtos);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Produtos $produtos)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProdutosRequest $request, Produtos $produtos)
+    public function update(UpdateProdutosRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $produtos = $this->produtos->find($id);
+        $produtos->update($data);
+        return response()->json($produtos);
     }
 
     /**
@@ -62,6 +60,7 @@ class ProdutosController extends Controller
      */
     public function destroy(Produtos $produtos)
     {
-        //
+       $produtos->delete();
+       return "Produto deletado";
     }
 }

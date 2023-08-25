@@ -9,20 +9,17 @@ use App\Http\Requests\UpdateCategoriaRequest;
 
 class CategoriaController extends Controller
 {
+    private Categoria $categoria;
+
+    public function __construct(Categoria $categoria){
+        $this->categoria = $categoria;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return response()->json($this->categoria->all());
     }
 
     /**
@@ -30,7 +27,10 @@ class CategoriaController extends Controller
      */
     public function store(StoreCategoriaRequest $request)
     {
-        //
+        $data = $request->validate();
+        $categoria = $this->categoria->create($data);
+        return response()->json($categoria);
+
     }
 
     /**
@@ -41,13 +41,6 @@ class CategoriaController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categoria $categoria)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
