@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('Descrição');
             $table->integer('Quantidade');
             $table->string('Imagem');
-            
-
+            $table->unsignedBigInteger('Categoria_id');
             $table->timestamps();
+
+            $table->foreign('Categoria_id')->references('id')->on('categorias')->cascadeOnDelete();
         });
     }
 

@@ -12,4 +12,8 @@ class Categoria extends Model
     protected $fillable = [
         'Nome',
     ];
+
+    public function produtos(){
+        return $this->hasMany(Produtos::class);
+    }
 }

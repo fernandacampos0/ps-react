@@ -19,6 +19,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
+        $categoria = $this->categoria->with('produtos')->get();
         return response()->json($this->categoria->all());
     }
 
@@ -27,7 +28,7 @@ class CategoriaController extends Controller
      */
     public function store(StoreCategoriaRequest $request)
     {
-        $data = $request->validate();
+        $data = $request->validated();
         $categoria = $this->categoria->create($data);
         return response()->json($categoria);
 
@@ -36,25 +37,31 @@ class CategoriaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categoria $categoria)
+    public function show($id)
     {
-        //
+        $categoria = $this->categoria->with('produtos')->find($id);
+        return response()->json($categoria);
     }
 
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoriaRequest $request, Categoria $categoria)
+    public function update(UpdateCategoriaRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $categoria = $this->categoria->find($id);
+        $categoria->update($data); 
+        return response()->json($categoria);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(int $id)
     {
-        //
+        $categoria = $this->categoria->newQuery()->findOrFail($id);
+        $categoria->delete();
+        return "Categoria deletada";
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Produtos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProdutosRequest;
 use App\Http\Requests\UpdateProdutosRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutosController extends Controller
 {
@@ -21,7 +22,8 @@ class ProdutosController extends Controller
 
     public function index()
     {
-        return response()->json($this->produtos->all());
+        $produtos = $this->produtos->with('categorias')->get();
+        return response()->json($produtos);
     }
 
     /**
@@ -30,6 +32,9 @@ class ProdutosController extends Controller
     public function store(StoreProdutosRequest $request)
     {
         $data = $request->validated();
+        if($request->hasFile('Imagem')){
+            $data['Imagem'] = $request->file('Imagem')->store('Imagem', 'public');
+        }
         $produtos = $this->produtos->create($data);
         return response()->json($produtos);
     }
@@ -39,7 +44,7 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        $produtos = $this->produtos->find($id);
+        $produtos = $this->produtos->with('categorias')->find($id);
         return response()->json($produtos);
     }
 
@@ -51,6 +56,10 @@ class ProdutosController extends Controller
     {
         $data = $request->validated();
         $produtos = $this->produtos->find($id);
+        if($request->hasFile('Imagem')){
+            Storage::disk('public')->delete($produtos->Imagem);
+            $data['Imagem'] = $request->file('Imagem')->store('Imagem', 'public');    
+        }
         $produtos->update($data);
         return response()->json($produtos);
     }
@@ -58,8 +67,10 @@ class ProdutosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Produtos $produtos)
+    public function destroy(int $id)
     {
+       $produtos = $this->produtos->newQuery()->findOrFail($id);
+       Storage::disk('public')->delete($produtos->Imagem);
        $produtos->delete();
        return "Produto deletado";
     }
