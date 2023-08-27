@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoriaRequest;
 use App\Http\Requests\UpdateCategoriaRequest;
+use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
@@ -19,8 +19,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categoria = $this->categoria->with('produtos')->get();
-        return response()->json($this->categoria->all());
+        $categorias = $this->categoria->with('produtos')->get();
+        return response()->json($categorias);
     }
 
     /**

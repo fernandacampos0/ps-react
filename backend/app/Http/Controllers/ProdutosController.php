@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProdutosRequest;
 use App\Http\Requests\UpdateProdutosRequest;
 use Illuminate\Support\Facades\Storage;
 
+
 class ProdutosController extends Controller
 {
     private Produtos $produtos;
@@ -22,8 +23,8 @@ class ProdutosController extends Controller
 
     public function index()
     {
-        $produtos = $this->produtos->with('categorias')->get();
-        return response()->json($produtos);
+        $produt = $this->produtos->with('categorias')->get();
+        return response()->json($produt);
     }
 
     /**
