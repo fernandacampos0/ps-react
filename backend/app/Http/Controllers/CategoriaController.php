@@ -17,9 +17,11 @@ class CategoriaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categorias = $this->categoria->with('produtos')->get();
+        $categorias = $this->categoria->with('produtos')->when($request->search, function ($query) use ($request){
+            $query->where('nome', 'like', '%'.$request->search.'%');         
+        })->paginate(10);
         return response()->json($categorias);
     }
 
@@ -47,10 +49,10 @@ class CategoriaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoriaRequest $request, $id)
+    public function update(UpdateCategoriaRequest $request, int $id)
     {
+        $categoria = $this->categoria->findOrFail($id);
         $data = $request->validated();
-        $categoria = $this->categoria->find($id);
         $categoria->update($data); 
         return response()->json($categoria);
     }

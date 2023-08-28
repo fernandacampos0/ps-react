@@ -11,14 +11,14 @@ class Produtos extends Model
     use HasFactory;
 
     protected $fillable =[
-        'Nome',
-        'Descrição',
-        'Quantidade',
-        'Imagem',
-        'Categoria_id',
+        'nome',
+        'descricao',
+        'quantidade',
+        'imagem',
+        'categoria_id',
     ];
 
     public function categorias(){
-        return $this->belongsTo(Categoria::class, 'Categoria_id');
+        return $this->belongsTo(Categoria::class, 'categoria_id');
     }
 }

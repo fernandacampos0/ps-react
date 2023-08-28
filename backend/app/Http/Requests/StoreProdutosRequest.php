@@ -22,11 +22,11 @@ class StoreProdutosRequest extends FormRequest
     public function rules(): array
     {
         return [
-        'Nome'=>'required',
-        'Descrição'=>'required',
-        'Quantidade'=>'required',
-        'Imagem'=>'required',
-        'Categoria_id'=>'required',
+        'nome'=>'required',
+        'descricao'=>'required',
+        'quantidade'=>'required',
+        'imagem'=>'image|mimes:jpg,png,jpeg',
+        'categoria_id'=>'required',
         ];
     }
 }

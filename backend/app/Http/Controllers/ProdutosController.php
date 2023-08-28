@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Produtos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProdutosRequest;
@@ -21,9 +22,11 @@ class ProdutosController extends Controller
      * Display a listing of the resource.
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $produt = $this->produtos->with('categorias')->get();
+        $produt = $this->produtos->with('categorias')->when($request->search, function ($query) use ($request){
+            $query->where('nome', 'like', '%'.$request->search.'%');         
+            })->paginate(10);
         return response()->json($produt);
     }
 
@@ -33,8 +36,9 @@ class ProdutosController extends Controller
     public function store(StoreProdutosRequest $request)
     {
         $data = $request->validated();
-        if($request->hasFile('Imagem')){
-            $data['Imagem'] = $request->file('Imagem')->store('Imagem', 'public');
+        if($request->hasFile('imagem')){
+            $path = $request->file('imagem')->store('imagem', 'public');
+            $data['imagem'] = url('storage/' . $path);
         }
         $produtos = $this->produtos->create($data);
         return response()->json($produtos);
@@ -56,10 +60,12 @@ class ProdutosController extends Controller
     public function update(UpdateProdutosRequest $request, $id)
     {
         $data = $request->validated();
-        $produtos = $this->produtos->find($id);
-        if($request->hasFile('Imagem')){
-            Storage::disk('public')->delete($produtos->Imagem);
-            $data['Imagem'] = $request->file('Imagem')->store('Imagem', 'public');    
+        $produtos = $this->produtos->findOrFail($id);
+        if($request->hasFile('imagem')){
+            Storage::disk('public')->delete($produtos->imagem);
+            $path = $request->file('imagem')->store('imagem', 'public');
+            $data['imagem'] = url('storage/' . $path);
+               
         }
         $produtos->update($data);
         return response()->json($produtos);
@@ -71,7 +77,7 @@ class ProdutosController extends Controller
     public function destroy(int $id)
     {
        $produtos = $this->produtos->newQuery()->findOrFail($id);
-       Storage::disk('public')->delete($produtos->Imagem);
+       Storage::disk('public')->delete($produtos->imagem);
        $produtos->delete();
        return "Produto deletado";
     }
