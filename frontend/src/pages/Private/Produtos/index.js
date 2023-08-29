@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import styles from "./style.module.css";
+import style from "./style.module.css";
 
 import BaseApi from "../../../services/Api";
 import { useStateContext } from "../../../context/ContextProvider";
@@ -154,33 +154,124 @@ export default function Produtos(){
         <>
              <div className="d-flex flex-column">
              <div className={"d-flex flex-column flex-md-row pb-4"}>
-                <div className={`${styles.products} col-12 col-md-4 mb-2`}>
-                    <h1>Produto</h1>
+                <div className={`${style.products} col-12 col-md-4 mb-2`}>
+                    <h1>Produtos</h1>
                 </div>
 
                 <div className="col-12 col-md-6 mb-2">
-            <form onSubmit={handleFilters} className="d-flex flex-row">
-              <input
-                type="text"
-                className="form-control "
-                placeholder="Search"
-                aria-label="Search"
-                value={filters.search}
-                onChange={(e) =>
-                  setFilters({ ...filters, search: e.target.value })
-                }
-              />
+                  <form onSubmit={handleFilters} className="d-flex flex-row">
+                    <input
+                      type="text"
+                      className="form-control "
+                      placeholder="Search"
+                      aria-label="Search"
+                      value={filters.search}
+                      onChange={(e) =>
+                        setFilters({ ...filters, search: e.target.value })
+                      }
+                    />
               <button className="btn btn-outline-success ms-2" type="submit">
                 <span>Search</span>
               </button>
             </form>
-          </div>
+            </div>
+            <div className="col-12 col-md-2 d-flex justify-content-end mb-2">
+              <button className="btn btn-outline-success ms-2" type="button">
+              <span>Create</span>
+              </button>
+            </div>
 
             </div>
+            <TableContainer>
+              <div className="d-flex align-items-center justify-content-center">
+              {isLoading && (
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              )}
+            </div>
+            {!isLoading && (
+              <>
+                {isFiltering && (
+                  <div className="spinner-border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                )}
+                {!isFiltering && (
+                  <>
+                    <Pagination
+                      onPaginate={handlePagination}
+                      showOnBottom={!isPaginating && tableData.data.length > 0}
+                      showOnTop={tableData.data.length > 0}
+                      paginateData={tableData}
+                    >
+                      {!isPaginating && (
+                        <>
+                          <div className={style.table_container}>
+                            <table className={`table`}>
+                              <thead className={`${isLoading ? "d-none" : ""}`}>
+                                <tr>
+                                  <th>ID</th>
+                                  <th>Name</th>
+                                  <th>Description</th>
+                                  <th>Quantity</th>
+                                  <th>Image</th>
+                                  <th>Category</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {tableData.data.map((item) => (
+                                  <tr>
+                                    <td>{item.id}</td>
+                                    <td>{item.nome}</td>
+                                    <td>{item.descricao}</td>
+                                    <td>{item.quantidade}</td>
+                                    <td><img className={style.productsImage} src={item.imagem} alt="" /></td>
+                                    <td>{item?.categorias?.nome}</td>
+                                    
+                                    <td>
+                                      <div className="d-flex align-items-center">
+                                        
+                                        <button
+                                          className="btn btn-danger"
+                                          onClick={() => onDelete(item)}
+                                        >
+                                          <i className="bi bi-trash-fill" />
+                                        </button>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                        </>
+                      )}
+                      {isPaginating && (
+                        <div className="spinner-border" role="status">
+                          <span className="visually-hidden">Loading...</span>
+                        </div>
+                      )}
+                      {tableData.data.length === 0 && (
+                        <h5 className="text-purple-3 text-center">
+                          Não foram encontrados registros com estes filtros.
+                        </h5>
+                      )}
+                    </Pagination>
+                  </>
+                )}
+              </>
+            )}
+        </TableContainer>
+        
+        
+
+        </div>
 
             
 
-            </div>
+        
+        
         
         
         
