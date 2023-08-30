@@ -77,6 +77,7 @@ const DefaultLayout = () => {
           <Link to="/dashboard" style={{fontWeight: "bold"}}>Dashboard</Link>
           <Link to="/users" style={{fontWeight: "bold"}}>Users</Link>
           <Link to="/products" style={{fontWeight: "bold"}}>Products</Link>
+          <Link to="/category" style={{fontWeight: "bold"}}>Category</Link>
         </aside>
         <div className="container-fluid mt-2 overflow overflow-x-auto">
           <header>

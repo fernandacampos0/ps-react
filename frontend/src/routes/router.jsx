@@ -4,6 +4,7 @@ import DefaultLayout from "../pages/layouts/DefaultLayout";
 import Dashboard from "../pages/Private/Dashboard";
 import Users from "../pages/Private/Users";
 import Products from "../pages/Private/Produtos";
+import Category from "../pages/Private/Categoria";
 import GuestLayout from "../pages/layouts/GuestLayout";
 import Login from "../pages/Public/Login";
 import Signup from "../pages/Public/Signup";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/products',
         element: <Products />,
+      },
+      {
+        path: '/category',
+        element: <Category />,
       },
     ]
   },

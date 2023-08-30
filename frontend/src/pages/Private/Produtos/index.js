@@ -220,6 +220,7 @@ export default function Produtos(){
                                   <th>Quantity</th>
                                   <th>Image</th>
                                   <th>Category</th>
+                                  <th>Actions</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -230,6 +231,7 @@ export default function Produtos(){
                                     <td>{item.descricao}</td>
                                     <td>{item.quantidade}</td>
                                     <td><img className={style.productsImage} src={item.imagem} alt="" /></td>
+                                    {console.log(item.image)}
                                     <td>{item?.categorias?.nome}</td>
                                     
                                     <td>
