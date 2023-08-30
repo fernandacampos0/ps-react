@@ -12,6 +12,7 @@ import { findIndex } from "lodash";
 import Pagination from "../../../components/Layout/Pagination";
 import { Spinner } from "react-bootstrap";
 import TableContainer from "../../../components/Layout/TableContainer";
+import ModalProducts from "../../../components/Modals/ModalProducts/index";
 
 const INITIAL_DATA = {
   total: 0,
@@ -176,9 +177,11 @@ export default function Produtos(){
             </form>
             </div>
             <div className="col-12 col-md-2 d-flex justify-content-end mb-2">
-              <button className="btn btn-outline-success ms-2" type="button">
-              <span>Create</span>
-              </button>
+              <ModalProducts onCreate={handleCreateProducts}>
+                <button className="btn btn-outline-success ms-2" type="button">
+                <span>Create</span>
+                </button>
+              </ModalProducts>
             </div>
 
             </div>
@@ -231,6 +234,12 @@ export default function Produtos(){
                                     
                                     <td>
                                       <div className="d-flex align-items-center">
+
+                                        <ModalProducts
+                                            idProducts={item.id}
+                                            onUpdate={handleUpdateProducts}
+                                        />
+                                        &nbsp;
                                         
                                         <button
                                           className="btn btn-danger"
