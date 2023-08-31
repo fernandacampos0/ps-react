@@ -1,0 +1,24 @@
+.products > h1 {
+    font-size: 1.5rem;
+    margin: 0;
+};
+
+.table_container {
+    display: block;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  
+  table {
+    --bs-table-bg: transparent !important;
+  }
+  
+  table tbody td {
+    vertical-align: middle;
+  }
+  
+  .productsImage{
+    max-width: 150px;
+    max-height: 200px;
+
+  }
