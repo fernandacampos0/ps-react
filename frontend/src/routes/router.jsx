@@ -9,6 +9,7 @@ import GuestLayout from "../pages/layouts/GuestLayout";
 import Login from "../pages/Public/Login";
 import Signup from "../pages/Public/Signup";
 import NotFound from "../pages/Public/NotFound";
+import ProductsIndex from "../pages/Public/ProductsIndex/index";
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
         element: <Category />,
       },
     ]
+  },
+
+  {
+    path: '/productsindex',
+    element: <ProductsIndex />,
   },
   {
     path: '/',
