@@ -31,7 +31,7 @@ const INITIAL_DATA = {
 
 
 
-export default function ProductsIndex(){
+  export default function ProductsIndex(){
 
     let [searchParams, setSearchParams] = useSearchParams();
 
@@ -149,6 +149,7 @@ export default function ProductsIndex(){
     }, [query]);
 
 
+
     return (<div className={style.productspage}>
       <h3> SanrioStore </h3>
         <Navbar
@@ -159,20 +160,21 @@ export default function ProductsIndex(){
         >
             <NavItems
             link="http://localhost:3000/productsindex"
-            icon="Inicio"/>
+            icon="Inicio">
+              </NavItems>
             
             <NavItems
-            link="#"
-            icon="Categorias">
-                {natData.data.map((Category)=>
+            link="javascript:;"
+            icon="Categorias"
+            >
+               {natData.data.map((category)=>
                 (<DropDown
                 subNat={handleFilters}
-                dropValue = {Category.id}
+                dropValue = {category.id}
                 natClick = {(e) =>
                     setFilters({ ...filters, search: e.target.value })}
-                children={Category.nome}/> )
+                children={category.nome}/> )
             )}
-            
             </NavItems>
 
         </Navbar>
