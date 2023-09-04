@@ -2,8 +2,8 @@
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.4);
     border-radius: 10px;
     height: fit-content;
-    min-height: 15vh;
-    width:16rem;
+    min-height: 20vh;
+    max-width:16rem;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -17,7 +17,7 @@
 }
 
 .card_body{
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 0 0;
     text-align: center;
     width: 100%;
     display: flex;

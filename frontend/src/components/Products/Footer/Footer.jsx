@@ -51,7 +51,7 @@ export default function Footer(props){
          </div>
      
          <div className={style.copyright}>
-            @ 2023, Feito com ❤️ por Adapti Soluções Web
+            @ 2023, Feito com ❤️ por Fernanda Campos
          </div>
      
         </div>

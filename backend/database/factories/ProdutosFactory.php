@@ -21,7 +21,7 @@ class ProdutosFactory extends Factory
             'descricao'=>$this->faker->name,
             'quantidade'=>$this->faker->numberBetween(15, 100),
             'imagem'=>$this->faker->imageUrl(640, 480),
-            'categoria_id'=>$this->faker->numberBetween(1, 10),
+            'categoria_id'=>$this->faker->numberBetween(1, 4),
             
         ];
     }

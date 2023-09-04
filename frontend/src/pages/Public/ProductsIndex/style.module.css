@@ -7,6 +7,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 :root{
   --light: white;
@@ -15,12 +16,12 @@
   --first:#35c3dc;;
   --secound:#c74870;;
   --third: #c95a95;;
-  --fourth:#9e4784;;
+  --fourth:#e089b2;;
   --fifth: #0f05a000;
-  --sixth: #df728f;
+  --sixth: #72c0df;
   --seventh:#e98eb1;
-  --eigth:#37306b;
-  --ninth: rgba(3,0,61,1);
+  --eigth:#a6527f;
+  --ninth: rgb(221, 110, 155);
   --tenth: rgb(191, 48, 136);
   --eleventh: #fdbeff;
   --twelfth:rgb(229, 145, 162);
@@ -63,12 +64,14 @@
   margin-top: auto;
   width: 100%;
   color: var(--light);
+  font-family:  "Ubuntu", sans-serif;
   align-items: center;
   justify-content: center;
 }
 
 
-.productspage h1 {
+.productspage h3 {
+  font-family:  "Pacifico";
   color: var(--light);
   margin-bottom: 10px;
   font-weight: 900;

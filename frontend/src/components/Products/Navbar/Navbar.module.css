@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .navbar{
     height:60px;
     background: solid var(--first);
@@ -21,9 +23,10 @@
 }
 
 .logo{
+    font-family: "Pacifico";
     position: absolute;
     left: 1vw;
-    top: 5px;
+    top: 55px;
     max-height:50px;
     margin: auto;
     cursor: pointer;
@@ -86,6 +89,7 @@
 }
 
 .nav_item > a{
+    font-family: "Pacifico";
     border-bottom: 5px solid var(--fifth);
     border-radius: 0px;
     display: block;

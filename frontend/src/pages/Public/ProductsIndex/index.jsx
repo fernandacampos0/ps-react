@@ -150,9 +150,9 @@ export default function ProductsIndex(){
 
 
     return (<div className={style.productspage}>
+      <h3> SanrioStore </h3>
         <Navbar
-        logo="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F347621664990591686%2F&psig=AOvVaw2xmCzs9HLtcosCn0FU099l&ust=1693774052774000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMj_mZvmjIEDFQAAAAAdAAAAABAK"
-        submit={handleFilters}
+        logo= "https://i.pinimg.com/originals/52/3a/4f/523a4f9b649b6138cd9520fe437e433a.png"
         change={(e) =>
             setFilters({ ...filters, search: e.target.value })
         }
@@ -228,19 +228,16 @@ export default function ProductsIndex(){
           )}
         <footer>
             <FooterM
-            name="FuteInfo"
-            slogan="O Futebol está aqui"
-            social1="fa-brands fa-instagram"
-            social2="fa-brands fa-twitter"
-            social3="fa-brands fa-linkedin-in"
+            name="Info"
+            slogan=""
             link1="#"
             link2="#"
             link3="#"
             link4="#"
             empresa1="Central de Noticias"
             empresa2="Nosso App"
-            parceria1="Coca-Cola"
-            parceria2="Rexona"></FooterM>
+            parceria1="Mc Donalds"
+            parceria2="Melissa"></FooterM>
         </footer>
     
 

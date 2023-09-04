@@ -17,7 +17,7 @@ export default function Navbar(props){
             
             <ul className={style.navbar_nav}>
                <a href="http://localhost:3000/productsindex"> <img className={style.logo} src={props.logo} alt="" /> </a>
-                
+               
                 <form className={style.search} onSubmit={props.submit}>
                         <input 
                         type="text" 
