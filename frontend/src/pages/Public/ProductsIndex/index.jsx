@@ -164,13 +164,13 @@ export default function ProductsIndex(){
             <NavItems
             link="#"
             icon="Categorias">
-                {natData.data.map((category)=>
+                {natData.data.map((Category)=>
                 (<DropDown
                 subNat={handleFilters}
-                dropValue = {category.id}
+                dropValue = {Category.id}
                 natClick = {(e) =>
                     setFilters({ ...filters, search: e.target.value })}
-                children={category.nome}/> )
+                children={Category.nome}/> )
             )}
             
             </NavItems>

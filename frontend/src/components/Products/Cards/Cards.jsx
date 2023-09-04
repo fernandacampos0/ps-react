@@ -11,7 +11,7 @@ export default function Cards(props){
                 <p className={style.card_quantity}> Quantidade: {props.quantity}</p>
                 <p className={style.card_category}>Categoria: {props.category}</p>
                 <div className={style.btn_div}>
-                    <button className={style.card_btn}>Detalhes</button>
+                    <button className={style.card_btn}>Comprar</button>
                 </div>
             </div>
         </div>

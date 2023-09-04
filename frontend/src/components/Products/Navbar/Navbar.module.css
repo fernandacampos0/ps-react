@@ -1,7 +1,7 @@
 .navbar{
     height:60px;
-    background: linear-gradient(to left, var(--third), var(--fourth));
-    border-bottom: 1.5px solid var(--gray);
+    background: solid var(--first);
+    border-bottom: 1.5px solid var(--light);
     z-index: 1000;
 }
 
@@ -38,7 +38,7 @@
 
 .search_input {
     width: 90%;
-    border: 3px solid grey;
+    border: 3px solid white;
     border-right: none;
     height: 36px;
     border-radius: 10px 0 0 10px;
@@ -48,7 +48,7 @@
 
 .search:hover > .search_input,
 .search_input:focus {
-    border: 3px solid var(--sixth);
+    border: 3px solid var(--light);
     border-right: none;
     outline: none;
     color: var(--dark);
@@ -56,11 +56,11 @@
 
 .search_submit {
     outline: none;
-    padding-top: 5px;    background: linear-gradient(to left, var(--third), var(--fourth));
+    padding-top: 5px;    background: linear-gradient(to left, var(--light), var(--fourth));
 
     height: 36px;
-    border: 2px solid grey;
-    background: grey;
+    border: 2px solid white;
+    background: var(--secound);
     color: var(--light);
     border-radius: 0 10px 10px 0;
     cursor: pointer;

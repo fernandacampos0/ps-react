@@ -12,19 +12,19 @@
   --light: white;
   --dark: black;
   --gray: gray;
-  --first:#cf3b92;;
-  --secound:#e1dcdc;;
-  --third: #9e4784;;
+  --first:#35c3dc;;
+  --secound:#c74870;;
+  --third: #c95a95;;
   --fourth:#9e4784;;
   --fifth: #0f05a000;
-  --sixth: #e0013c;
-  --seventh:#2e0421;
+  --sixth: #df728f;
+  --seventh:#e98eb1;
   --eigth:#37306b;
   --ninth: rgba(3,0,61,1);
   --tenth: rgb(191, 48, 136);
   --eleventh: #fdbeff;
-  --twelfth:rgb(178, 96, 171);
-  --thirteenth:rgb(175, 26, 133);
+  --twelfth:rgb(229, 145, 162);
+  --thirteenth:rgb(222, 64, 109);
 }
 
 
@@ -38,7 +38,7 @@
   padding: 0;
   font-family:  "Ubuntu", sans-serif;
   color: var(--light);
-  background: linear-gradient(180deg, var(--first),var(--secound));
+  background: linear-gradient(0deg, var(--first),var(--secound) 65%);
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
