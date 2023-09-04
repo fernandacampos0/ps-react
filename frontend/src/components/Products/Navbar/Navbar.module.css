@@ -86,6 +86,7 @@
 }
 
 .nav_item > a{
+    font-family: "Pacifico";
     border-bottom: 5px solid var(--fifth);
     border-radius: 0px;
     display: block;
